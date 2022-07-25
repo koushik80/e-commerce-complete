@@ -26,9 +26,12 @@
 <li></li>
 </ul>
 
-<p>(Back-end) MongoDB,.......</p>
+<p>(Back-end)</p>
 
 <ul>
+<li></li>
+<li></li>
+<li></li>
 <li></li>
 <li></li>
 </ul>
@@ -56,9 +59,17 @@
   <p>React-hook</p>
   <p>React-router-dom</p>
   <p>Material-UI</p>
+  <p>Node</p>
+  <p>cors</p>
+  <p>crypto-js</p>
+  <p>dotenv</p>
   <p>Mongoose</p>
   <p>MongoDB</p>
-  <p>Node</p>
+  <p>express</p>
+  <p>jsonwebtoken</p>
+  <p>nodemon</p>
+  <p>stripe</p>
+  <p>react-stripe-checkout</p>
 
  <h3 align="left">Instruction:</h3>
 
