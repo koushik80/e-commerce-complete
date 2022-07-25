@@ -1,10 +1,10 @@
+import { Badge } from "@material-ui/core";
+import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
-import logo from './logo.png';
 import '../App.css';
-import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import { Badge } from "@material-ui/core";
 import { mobile } from '../responsive';
+import logo from './logo.png';
 
 const Container = styled.div`
      height: 60px;
@@ -92,7 +92,6 @@ const Navbar = () => {
           </MenuItem>
         </Right>
       </Wrapper>
-      
     </Container>
   );
 };

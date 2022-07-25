@@ -57,6 +57,8 @@
   <p>styled-components</p>
   <p>React-dom</p>
   <p>React-hook</p>
+  <p>axios</p>
+  <p>react-redux</p>
   <p>React-router-dom</p>
   <p>Material-UI</p>
   <p>Node</p>
