@@ -44,6 +44,7 @@ const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
   const handleFilters = (e) => {
     const value = e.target.value;
     setFilters({
@@ -60,9 +61,7 @@ const ProductList = () => {
               <Filter>
                <FilterText>Filter Products:</FilterText>
                <Select name="color" onChange={handleFilters}>
-                 <Option disabled>
-                   Color
-                 </Option>
+                 <Option disabled>Color</Option>
                  <Option>White</Option>
                  <Option>Black</Option>
                  <Option>Red</Option>
@@ -71,9 +70,7 @@ const ProductList = () => {
                  <Option>Green</Option>
                </Select>
                <Select name="size" onChange={handleFilters}>
-                 <Option disabled>
-                    Size
-                 </Option>
+                 <Option disabled>Size</Option>
                  <Option>XS</Option>
                  <Option>S</Option>
                  <Option>M</Option>
@@ -83,14 +80,14 @@ const ProductList = () => {
               </Filter>
               <Filter>
                <FilterText>Sort Products:</FilterText>
-               <Select>
-                 <Option selected>Newest</Option>
+               <Select onChange={(e) => setSort(e.target.value)}>
+                 <Option value="newest">Newest</Option>
                  <Option>Price (asc)</Option>
                  <Option>Price (desc)</Option>
                </Select>
               </Filter>
             </FilterContainer>
-            <Products />
+            <Products cat={cat} filters={filters} sort={sort}  />
             <Newsletter />
             <Footer />
         </Container>
