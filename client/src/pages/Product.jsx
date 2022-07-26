@@ -1,10 +1,14 @@
+import { Add, Remove } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import Newsletter from '../components/Newsletter'
+import Newsletter from '../components/Newsletter';
+import { publicRequest } from '../requestMethods';
 import { mobile } from '../responsive';
-import { Add, Remove } from '@material-ui/icons';
+
 
 const Container = styled.div``;
 
@@ -116,6 +120,24 @@ const Button = styled.button`
 
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+
+
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
+
     return (
         <Container>
             <Navbar />
