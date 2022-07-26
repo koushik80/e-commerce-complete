@@ -13,7 +13,7 @@ const stripeRoute = require("./routes/stripe");
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL)
-    .then(() => console.log("DBConnection Successful!"))
+    .then(() => console.log("DB Connection Successful!"))
     .catch((err) => {
         console.log(err);
     });
@@ -32,5 +32,5 @@ app.use("/api/checkout", stripeRoute);
 
 
 app.listen(process.env.PORT || 8000, () => {
-    console.log("Backend server is on fire!");
+    console.log("Backend server is on fire...");
 });
