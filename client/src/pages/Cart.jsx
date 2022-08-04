@@ -1,9 +1,13 @@
+import { Add, Remove } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import StripeCheckout from 'react-stripe-checkout';
 import styled from 'styled-components';
 import Announcement from '../components/Announcement';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import { userRequest } from '../requestMethods';
 import { mobile } from '../responsive';
 
 const KEY = process.env.REACT_APP_STRIPE;
@@ -159,9 +163,26 @@ const Button = styled.button`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  const history = useHistory();
   const onToken = (token) => {
     setStripeToken(token);
   };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: 500,
+        });
+        history.push("/success", {
+          stripeData: res.data,
+          products: cart, });
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, history]);
+
     return (
         <Container>
             <Navbar />
@@ -198,9 +219,9 @@ const Cart = () => {
                     <PriceDetail>
                       <ProductAmountContainer>
                         <Add />
-                       <ProductAmount>{product.quantity}</ProductAmount>
-                      <Remove />
-                     </ProductAmountContainer>
+                        <ProductAmount>{product.quantity}</ProductAmount>
+                        <Remove />
+                      </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
                   </ProductPrice>
@@ -213,7 +234,7 @@ const Cart = () => {
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>
               <SummaryItem>
                 <SummaryItemText>Subtotal</SummaryItemText>
-                <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+                <SummaryItemPrice>€ {cart.total}</SummaryItemPrice>
               </SummaryItem>
               <SummaryItem>
                 <SummaryItemText>Estimated Shipping</SummaryItemText>
