@@ -253,7 +253,7 @@ const Cart = () => {
                 image="https://i.im.ge/2022/08/05/Fb0oDK.logo.jpg" alt="logo" border="0"
                 billingAddress
                 shippingAddress
-                description={`Your total is $${cart.total}`}
+                description={`Your total is €${cart.total}`}
                 amount={cart.total * 100}
                 token={onToken}
                 stripeKey={KEY}
