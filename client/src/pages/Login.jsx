@@ -65,6 +65,10 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`;
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -93,7 +97,7 @@ const Login = () => {
               LOGIN
             </Button>
              {error && <Error>Something went wrong...</Error>}
-            <Link>DON'T YOU REMEMBER THE PASSWORD?</Link>
+            <Link>FORGOT PASSWORD?</Link>
             <Link>CREATE A NEW ACCOUNT</Link>
           </Form>
          </Wrapper>
